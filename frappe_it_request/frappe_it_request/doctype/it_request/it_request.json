@@ -1,0 +1,326 @@
+{
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "creation": "2025-10-21 17:45:06.437450",
+ "doctype": "DocType",
+ "email_append_to": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_resolution_deadline",
+  "resolution_deadline",
+  "informa\u00e7\u00f5es_do_solicitante_section",
+  "applicant_name",
+  "applicant",
+  "column_break_bnxk",
+  "sector_applicant",
+  "email_applicant",
+  "first_section",
+  "first_category",
+  "column_break_weuw",
+  "second_category",
+  "column_break_kvkd",
+  "third_category",
+  "worker_info_section",
+  "employee_name",
+  "employee_sector",
+  "column_break_pcck",
+  "employee_id",
+  "date_entry",
+  "second_section",
+  "subject",
+  "assigned_user",
+  "anexo",
+  "problem_description",
+  "link_doc",
+  "internal_tab",
+  "section_break_bvis",
+  "responsavel",
+  "parent_it_request",
+  "lft",
+  "rgt",
+  "is_group",
+  "old_parent",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_resolution_deadline",
+   "fieldtype": "Section Break",
+   "label": "Retorno do T.I."
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "resolution_deadline",
+   "fieldtype": "Date",
+   "label": "Previs\u00e3o de Retorno",
+   "show_on_timeline": 1
+  },
+  {
+   "fieldname": "informa\u00e7\u00f5es_do_solicitante_section",
+   "fieldtype": "Section Break",
+   "label": "Informa\u00e7\u00f5es do Solicitante"
+  },
+  {
+   "fetch_from": "applicant.full_name",
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "label": "Solicitante",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "applicant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "E-mail do solicitante",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_bnxk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sector_applicant",
+   "fieldtype": "Data",
+   "label": "Departamento do Solicitante",
+   "read_only": 1
+  },
+  {
+   "description": "*N\u00e3o remover",
+   "fieldname": "email_applicant",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "E-mail do solicitante (interno)",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "first_section",
+   "fieldtype": "Section Break",
+   "label": "Informa\u00e7\u00f5es da Solicita\u00e7\u00e3o"
+  },
+  {
+   "fieldname": "first_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "1\u00ba Categoria de Solicita\u00e7\u00e3o",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_weuw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "second_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "2\u00ba Categoria de Solicita\u00e7\u00e3o",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kvkd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "third_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "3\u00ba Categoria de Solicita\u00e7\u00e3o",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n",
+   "fieldname": "worker_info_section",
+   "fieldtype": "Section Break",
+   "label": "Informa\u00e7\u00f5es do Colaborador"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Nome do Colaborador",
+   "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\";\r\n"
+  },
+  {
+   "fieldname": "employee_sector",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Setor do Colaborador",
+   "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_pcck",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "N\u00famero da carteirinha do colaborador (opcional)",
+   "fieldname": "employee_id",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "ID"
+  },
+  {
+   "description": "<p>- Se for <strong>onboarding</strong>, insira a data prevista para o colaborador come\u00e7ar.</p>\n<p>- Se for <strong>offboarding</strong>, insira a data em que o colaborador foi ou ser\u00e1 desligado.</p>",
+   "fieldname": "date_entry",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Data da Aplica\u00e7\u00e3o",
+   "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n"
+  },
+  {
+   "fieldname": "second_section",
+   "fieldtype": "Section Break",
+   "label": "Detalhes da Solicita\u00e7\u00e3o"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Assunto",
+   "reqd": 1
+  },
+  {
+   "description": "Para chamados que devem ser atribu\u00eddos a uma pessoa espec\u00edfica.",
+   "fieldname": "assigned_user",
+   "fieldtype": "Link",
+   "label": "Destinat\u00e1rio",
+   "link_filters": "[[\"User\",\"role\",\"=\",\"Information Technology User\"]]",
+   "options": "User"
+  },
+  {
+   "fieldname": "anexo",
+   "fieldtype": "Attach",
+   "label": "Anexo"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "problem_description",
+   "fieldtype": "Text Editor",
+   "label": "Descri\u00e7\u00e3o da Solicita\u00e7\u00e3o",
+   "placeholder": "Escreva detalhadamente a sua solicita\u00e7\u00e3o."
+  },
+  {
+   "allow_on_submit": 1,
+   "depends_on": "eval:doc.first_category == \"Documento\" && doc.second_category == \"Edi\u00e7\u00e3o\"  || doc.first_category == \"Documento\" && doc.second_category == \"Manuten\u00e7\u00e3o\"\r\n ",
+   "description": "*Aceita links HTTP/HTTPS \u00fanicos ou m\u00faltiplos separados por v\u00edrgula, espa\u00e7o ou quebra de linha.",
+   "fetch_if_empty": 1,
+   "fieldname": "link_doc",
+   "fieldtype": "Text",
+   "label": "Links dos Documentos",
+   "mandatory_depends_on": "eval:doc.first_category == \"Documento\" && doc.second_category == \"Edi\u00e7\u00e3o\"  || doc.first_category == \"Documento\" && doc.second_category == \"Manuten\u00e7\u00e3o\"\r\n ",
+   "placeholder": "Insira um ou mais links arquivos online, como planilhas e dashboards. OBRIGAT\u00d3RIO para manuten\u00e7\u00e3o e edi\u00e7\u00e3o."
+  },
+  {
+   "fieldname": "internal_tab",
+   "fieldtype": "Tab Break",
+   "label": "Internal"
+  },
+  {
+   "fieldname": "section_break_bvis",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "responsavel",
+   "fieldtype": "Link",
+   "label": "Responsavel",
+   "options": "User"
+  },
+  {
+   "fieldname": "parent_it_request",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent IT Request",
+   "options": "IT Request"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "IT Request"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "IT Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-22 16:00:59.680393",
+ "modified_by": "Administrator",
+ "module": "Frappe IT Request",
+ "name": "IT Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Information Technology User",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sender_field": "email_applicant",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "subject_field": "subject",
+ "track_changes": 1
+}

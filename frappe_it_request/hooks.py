@@ -1,7 +1,7 @@
 app_name = "frappe_it_request"
-app_title = "Frappe IT Request"
+app_title = "IT Request"
 app_publisher = "AnyGridTech"
-app_description = "IT Request doctype."
+app_description = "An IT request management module for handling hardware, software, and access support workflows within Frappe."
 app_email = "lgotcfg@gmail.com"
 app_license = "mit"
 
