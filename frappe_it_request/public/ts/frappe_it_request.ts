@@ -2,21 +2,6 @@
 import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 import type { ITRequestCategories } from "./types/frappe_it_request";
 
-// Extend frappe.utils to include play_sound
-declare global {
-  interface Window {
-    frappe: typeof frappe & {
-      utils: typeof frappe.utils & {
-        play_sound(sound: string): void;
-      };
-      meta: any;
-      translation?: {
-        __dict: Record<string, string>;
-      };
-    };
-  }
-}
-
 /**
  * A hierarchical record representing IT request categories and their subcategories.
  *
@@ -259,7 +244,7 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
   // Isso garantirá que o setor seja atualizado quando o solicitante mudar
   if (frm.doc['applicant']) {
     try {
-      const r = await frappe.db.get_value('User Details', frm.doc['applicant'], 'internal_department');
+      const r = await frappe.db.get_value('User', frm.doc['applicant'], 'internal_department');
       if (r && r.message && r.message.internal_department) {
         frm.set_value("sector_applicant", r.message.internal_department);
         frm.refresh_field('sector_applicant');
@@ -271,8 +256,8 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
     } catch (error) {
       console.error("Erro ao buscar setor do solicitante:", error);
       frappe.msgprint({
-        title: __('Erro'),
-        message: __('Não foi possível obter o setor do solicitante. Por favor, selecione manualmente.'),
+        title: ('Erro'),
+        message: ('Não foi possível obter o setor do solicitante. Por favor, selecione manualmente.'),
         indicator: 'red'
       });
     }
@@ -288,143 +273,8 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
 }
 
 frappe.ui.form.on('IT Request', {
-  applicant: async (frm: FrappeForm) => {
-    await initializeForm(frm);
-  },
-  refresh: async (frm: FrappeForm) => {
-    await initializeForm(frm);
-  },
-
-  first_category(frm: FrappeForm) {
-    clearSubsequentCategories(frm, 1);
-    updateOptions(frm, 2);
-    updateOptions(frm, 3);
-    frm.refresh_field('second_category');
-    frm.refresh_field('third_category');
-  },
-
-  second_category(frm: FrappeForm) {
-    clearSubsequentCategories(frm, 2);
-    updateOptions(frm, 3);
-    frm.refresh_field('third_category');
-  },
-  onload: async (frm: FrappeForm) => {
-    await initializeForm(frm);
-  }
-});
-
-// Código responsável por bloquear a edição do campo ""
-// Adicionando tipo FrappeForm ao parâmetro frm
-frappe.ui.form.on('IT Request', {
-  refresh: function (frm: FrappeForm) {
-    // Garante que o campo esteja visível para todos
-    frm.set_df_property('resolution_deadline', 'hidden', 0);
-
-    // Verifica se o usuário tem um dos cargos permitidos
-    // frappe.user.has_role aceita string[]
-    if (!frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
-      frm.set_df_property('resolution_deadline', 'read_only', 1); // Bloqueia edição
-
-      // Captura a tentativa de edição do campo
-      // Assumindo que $wrapper existe e tem o método 'on' (via jQuery)
-      frm.fields_dict['resolution_deadline']?.$wrapper?.on('click', function () {
-        frappe.msgprint({
-          title: __('Acesso Negado'),
-          message: __('Você não tem permissão para editar o prazo de resolução do chamado.'),
-          indicator: 'red'
-        });
-      });
-    } else {
-      // Garante que se o usuário *tiver* permissão, o campo seja editável
-      frm.set_df_property('resolution_deadline', 'read_only', 0);
-      // Remove qualquer listener de clique anterior para evitar mensagens desnecessárias
-      frm.fields_dict['resolution_deadline']?.$wrapper?.off('click');
-    }
-  }
-});
-
-// Código do campo de 'problem_description'
-// Adicionando tipo FrappeForm ao parâmetro frm
-frappe.ui.form.on('IT Request', {
-  refresh: function (frm: FrappeForm) {
-    // Garante que o campo 'problem_description' esteja sempre visível para todos.
-    frm.set_df_property('problem_description', 'hidden', 0);
-
-    // Verifica se o usuário tem um dos cargos permitidos (IT, Administrator, System Manager).
-    if (frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
-      // Se o usuário tem permissão, o campo é editável.
-      frm.set_df_property('problem_description', 'read_only', 0);
-      // Remove listener de clique anterior
-      frm.fields_dict['problem_description']?.$wrapper?.off('click');
-    } else {
-      // Se o usuário NÃO tem permissão, verifica o status do workflow.
-      if (frm.doc['workflow_state'] === "Pendente") {
-        // Se o workflow estiver "Pendente", o campo é editável.
-        frm.set_df_property('problem_description', 'read_only', 0);
-        // Remove listener de clique anterior
-        frm.fields_dict['problem_description']?.$wrapper?.off('click');
-      } else {
-        // Caso contrário (workflow não está pendente), o campo é bloqueado para edição.
-        frm.set_df_property('problem_description', 'read_only', 1);
-
-        // Captura a tentativa de edição do campo e exibe uma mensagem.
-        // Remove listener anterior antes de adicionar um novo para evitar duplicação
-        frm.fields_dict['problem_description']?.$wrapper?.off('click').on('click', function () {
-          frappe.msgprint({
-            title: __('Acesso Negado'),
-            message: __('Você não tem permissão para editar a descrição do chamado. Contate o administrador.'),
-            indicator: 'red'
-          });
-        });
-      }
-    }
-  }
-});
-
-
-frappe.ui.form.on('IT Request', {
-  refresh: function (frm: FrappeForm) {
-    const allowedUsers = frappe.user.has_role('Information Technology User') || frappe.user.has_role('System Manager') || frappe.user.has_role('Administrator');
-
-    const options = {
-      removeTabs: true,
-      removeSidebar: !allowedUsers,
-      removeAssignments: false,
-      removeAssignmentsButton: false,
-      removeAttachments: false,
-      removeAttachmentsButton: false,
-      removeShared: false,
-      removeTags: false,
-      removeSidebarStats: false,
-      removeSidebarMenu: false,
-      removeSidebarReset: false,
-      removeSidebarToggle: false,
-    };
-
-    if (growatt?.utils?.adjust_html_elements) {
-      growatt.utils.adjust_html_elements(frm, options);
-    } else {
-      console.error('growatt.utils.adjust_html_elements não está disponível.');
-    }
-  },
-});
-
-// Helper function __ (se não estiver globalmente disponível via declaração)
-function __(text: string): string {
-  // Verifica se frappe.translation e __dict estão definidos
-  // @ts-ignore - frappe.translation exists at runtime but not in types
-  if (frappe.translation && frappe.translation.__dict) {
-    // @ts-ignore
-    return frappe.translation.__dict[text] || text;
-  }
-  // Retorna o texto original se __dict não estiver definido
-  return text;
-}
-
-// Limit sector_applicant fields
-// Limit sector_applicant and employee_sector fields
-frappe.ui.form.on('IT Request', {
   setup(frm: FrappeForm) {
+    // Limit sector_applicant and employee_sector fields
     ['sector_applicant', 'employee_sector'].forEach(field => {
       frm.set_query(field, () => {
         return {
@@ -448,11 +298,102 @@ frappe.ui.form.on('IT Request', {
         };
       });
     });
-  }
-});
+  },
+  
+  applicant: async (frm: FrappeForm) => {
+    await initializeForm(frm);
+  },
+  
+  refresh: async function (frm: FrappeForm) {
+    // Inicializar formulário
+    await initializeForm(frm);
+    
+    // Código responsável por bloquear a edição do campo "resolution_deadline"
+    frm.set_df_property('resolution_deadline', 'hidden', 0);
+    
+    if (!frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
+      frm.set_df_property('resolution_deadline', 'read_only', 1);
+      frm.fields_dict['resolution_deadline']?.$wrapper?.on('click', function () {
+        frappe.msgprint({
+          title: ('Acesso Negado'),
+          message: ('Você não tem permissão para editar o prazo de resolução do chamado.'),
+          indicator: 'red'
+        });
+      });
+    } else {
+      frm.set_df_property('resolution_deadline', 'read_only', 0);
+      frm.fields_dict['resolution_deadline']?.$wrapper?.off('click');
+    }
+    
+    // Código do campo de 'problem_description'
+    frm.set_df_property('problem_description', 'hidden', 0);
+    
+    if (frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
+      frm.set_df_property('problem_description', 'read_only', 0);
+      frm.fields_dict['problem_description']?.$wrapper?.off('click');
+    } else {
+      if (frm.doc['workflow_state'] === "Pendente") {
+        frm.set_df_property('problem_description', 'read_only', 0);
+        frm.fields_dict['problem_description']?.$wrapper?.off('click');
+      } else {
+        frm.set_df_property('problem_description', 'read_only', 1);
+        frm.fields_dict['problem_description']?.$wrapper?.off('click').on('click', function () {
+          frappe.msgprint({
+            title: ('Acesso Negado'),
+            message: ('Você não tem permissão para editar a descrição do chamado. Contate o administrador.'),
+            indicator: 'red'
+          });
+        });
+      }
+    }
+    
+    // Ajustes de elementos HTML do formulário
+    const allowedUsers = frappe.user.has_role('Information Technology User') || 
+                         frappe.user.has_role('System Manager') || 
+                         frappe.user.has_role('Administrator');
 
-// Validate fields started with 'link_' if they contain a url or a list of urls separated by new lines and separators (, ; |)
-frappe.ui.form.on('IT Request', {
+    const options = {
+      removeTabs: true,
+      removeSidebar: !allowedUsers,
+      removeAssignments: false,
+      removeAssignmentsButton: false,
+      removeAttachments: false,
+      removeAttachmentsButton: false,
+      removeShared: false,
+      removeTags: false,
+      removeSidebarStats: false,
+      removeSidebarMenu: false,
+      removeSidebarReset: false,
+      removeSidebarToggle: false,
+    };
+
+    if (agt?.utils?.form?.adjust_html_elements) {
+      agt.utils.form.adjust_html_elements(frm, options);
+    } else {
+      console.error('agt.utils.form.adjust_html_elements não está disponível.');
+    }
+  },
+
+  first_category(frm: FrappeForm) {
+    clearSubsequentCategories(frm, 1);
+    updateOptions(frm, 2);
+    updateOptions(frm, 3);
+    frm.refresh_field('second_category');
+    frm.refresh_field('third_category');
+    checkDocumentEditingOrMaintenance(frm);
+  },
+
+  second_category(frm: FrappeForm) {
+    clearSubsequentCategories(frm, 2);
+    updateOptions(frm, 3);
+    frm.refresh_field('third_category');
+    checkDocumentEditingOrMaintenance(frm);
+  },
+  
+  onload: async (frm: FrappeForm) => {
+    await initializeForm(frm);
+  },
+  
   validate: function (frm: FrappeForm) {
     const linkFields: string[] = Object.keys(frm.doc).filter((field: string) => field.startsWith('link_'));
     const invalidLinks: string[] = [];
@@ -503,7 +444,7 @@ frappe.ui.form.on('IT Request', {
     });
 
     // Check required fields
-    frm.meta.fields.forEach((field: any) => {
+    frm.meta.fields.forEach((field) => {
       if (field.reqd) {
         const value = frm.doc[field.fieldname];
         if (
@@ -518,7 +459,6 @@ frappe.ui.form.on('IT Request', {
 
     // Prepare and throw errors for empty required fields
     if (emptyRequiredFields.length > 0) {
-      // @ts-ignore - frappe.utils.play_sound exists at runtime
       frappe.utils.play_sound("error"); // Some cool sound effect to get the user's attention
 
       const plural = emptyRequiredFields.length > 1;
@@ -539,7 +479,6 @@ frappe.ui.form.on('IT Request', {
 
     // Prepare and throw errors for empty link fields
     if (emptyLinkFields.length > 0) {
-      // @ts-ignore - frappe.utils.play_sound exists at runtime
       frappe.utils.play_sound("error"); // Some cool sound effect to get the user's attention
 
       const plural = emptyLinkFields.length > 1;
@@ -580,25 +519,15 @@ frappe.ui.form.on('IT Request', {
   }
 });
 
-frappe.ui.form.on('IT Request', {
-  first_category: function (frm: FrappeForm) {
-    checkDocumentEditingOrMaintenance(frm);
-  },
-  second_category: function (frm: FrappeForm) {
-    checkDocumentEditingOrMaintenance(frm);
-  }
-});
-
 function checkDocumentEditingOrMaintenance(frm: FrappeForm): void {
   const isDocumentEditingOrMaintenance =
     (frm.doc['first_category'] === "Documento" && frm.doc['second_category'] === "Edição") ||
     (frm.doc['first_category'] === "Documento" && frm.doc['second_category'] === "Manutenção");
 
   if (isDocumentEditingOrMaintenance) {
-    // @ts-ignore - frappe.utils.play_sound exists at runtime
     frappe.utils.play_sound("alert"); // Some cool sound effect to get the user's attention
     frappe.show_alert({
-      message: __('Por favor, inclua links relacionados à edição ou manutenção de documentos.'),
+      message: ('Por favor, inclua links relacionados à edição ou manutenção de documentos.'),
       indicator: 'blue'
     }, 5);
   }

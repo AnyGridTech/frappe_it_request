@@ -1,5 +1,5 @@
 app_name = "frappe_it_request"
-app_title = "IT Request"
+app_title = "Frappe IT Request"
 app_publisher = "AnyGridTech"
 app_description = "An IT request management module for handling hardware, software, and access support workflows within Frappe."
 app_email = "lgotcfg@gmail.com"
@@ -26,7 +26,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/frappe_it_request/css/frappe_it_request.css"
-# app_include_js = "/assets/frappe_it_request/js/frappe_it_request.js"
+app_include_js = "/assets/frappe_it_request/js/frappe_it_request.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/frappe_it_request/css/frappe_it_request.css"

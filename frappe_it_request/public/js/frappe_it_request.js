@@ -213,7 +213,7 @@ async function initializeForm(frm) {
     }
     if (frm.doc['applicant']) {
         try {
-            const r = await frappe.db.get_value('User Details', frm.doc['applicant'], 'internal_department');
+            const r = await frappe.db.get_value('User', frm.doc['applicant'], 'internal_department');
             if (r && r.message && r.message.internal_department) {
                 frm.set_value("sector_applicant", r.message.internal_department);
                 frm.refresh_field('sector_applicant');
@@ -226,8 +226,8 @@ async function initializeForm(frm) {
         catch (error) {
             console.error("Erro ao buscar setor do solicitante:", error);
             frappe.msgprint({
-                title: __('Erro'),
-                message: __('Não foi possível obter o setor do solicitante. Por favor, selecione manualmente.'),
+                title: ('Erro'),
+                message: ('Não foi possível obter o setor do solicitante. Por favor, selecione manualmente.'),
                 indicator: 'red'
             });
         }
@@ -238,104 +238,6 @@ async function initializeForm(frm) {
     frm.refresh_field('first_category');
     frm.refresh_field('second_category');
     frm.refresh_field('third_category');
-}
-frappe.ui.form.on('IT Request', {
-    applicant: async (frm) => {
-        await initializeForm(frm);
-    },
-    refresh: async (frm) => {
-        await initializeForm(frm);
-    },
-    first_category(frm) {
-        clearSubsequentCategories(frm, 1);
-        updateOptions(frm, 2);
-        updateOptions(frm, 3);
-        frm.refresh_field('second_category');
-        frm.refresh_field('third_category');
-    },
-    second_category(frm) {
-        clearSubsequentCategories(frm, 2);
-        updateOptions(frm, 3);
-        frm.refresh_field('third_category');
-    },
-    onload: async (frm) => {
-        await initializeForm(frm);
-    }
-});
-frappe.ui.form.on('IT Request', {
-    refresh: function (frm) {
-        frm.set_df_property('resolution_deadline', 'hidden', 0);
-        if (!frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
-            frm.set_df_property('resolution_deadline', 'read_only', 1);
-            frm.fields_dict['resolution_deadline']?.$wrapper?.on('click', function () {
-                frappe.msgprint({
-                    title: __('Acesso Negado'),
-                    message: __('Você não tem permissão para editar o prazo de resolução do chamado.'),
-                    indicator: 'red'
-                });
-            });
-        }
-        else {
-            frm.set_df_property('resolution_deadline', 'read_only', 0);
-            frm.fields_dict['resolution_deadline']?.$wrapper?.off('click');
-        }
-    }
-});
-frappe.ui.form.on('IT Request', {
-    refresh: function (frm) {
-        frm.set_df_property('problem_description', 'hidden', 0);
-        if (frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
-            frm.set_df_property('problem_description', 'read_only', 0);
-            frm.fields_dict['problem_description']?.$wrapper?.off('click');
-        }
-        else {
-            if (frm.doc['workflow_state'] === "Pendente") {
-                frm.set_df_property('problem_description', 'read_only', 0);
-                frm.fields_dict['problem_description']?.$wrapper?.off('click');
-            }
-            else {
-                frm.set_df_property('problem_description', 'read_only', 1);
-                frm.fields_dict['problem_description']?.$wrapper?.off('click').on('click', function () {
-                    frappe.msgprint({
-                        title: __('Acesso Negado'),
-                        message: __('Você não tem permissão para editar a descrição do chamado. Contate o administrador.'),
-                        indicator: 'red'
-                    });
-                });
-            }
-        }
-    }
-});
-frappe.ui.form.on('IT Request', {
-    refresh: function (frm) {
-        const allowedUsers = frappe.user.has_role('Information Technology User') || frappe.user.has_role('System Manager') || frappe.user.has_role('Administrator');
-        const options = {
-            removeTabs: true,
-            removeSidebar: !allowedUsers,
-            removeAssignments: false,
-            removeAssignmentsButton: false,
-            removeAttachments: false,
-            removeAttachmentsButton: false,
-            removeShared: false,
-            removeTags: false,
-            removeSidebarStats: false,
-            removeSidebarMenu: false,
-            removeSidebarReset: false,
-            removeSidebarToggle: false,
-        };
-        if (growatt?.utils?.adjust_html_elements) {
-            growatt.utils.adjust_html_elements(frm, options);
-        }
-        else {
-            console.error('growatt.utils.adjust_html_elements não está disponível.');
-        }
-    },
-});
-function __(text) {
-    if (frappe.translation && frappe.translation.__dict) {
-        return frappe.translation.__dict[text] || text;
-    }
-    return text;
 }
 frappe.ui.form.on('IT Request', {
     setup(frm) {
@@ -362,9 +264,89 @@ frappe.ui.form.on('IT Request', {
                 };
             });
         });
-    }
-});
-frappe.ui.form.on('IT Request', {
+    },
+    applicant: async (frm) => {
+        await initializeForm(frm);
+    },
+    refresh: async function (frm) {
+        await initializeForm(frm);
+        frm.set_df_property('resolution_deadline', 'hidden', 0);
+        if (!frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
+            frm.set_df_property('resolution_deadline', 'read_only', 1);
+            frm.fields_dict['resolution_deadline']?.$wrapper?.on('click', function () {
+                frappe.msgprint({
+                    title: ('Acesso Negado'),
+                    message: ('Você não tem permissão para editar o prazo de resolução do chamado.'),
+                    indicator: 'red'
+                });
+            });
+        }
+        else {
+            frm.set_df_property('resolution_deadline', 'read_only', 0);
+            frm.fields_dict['resolution_deadline']?.$wrapper?.off('click');
+        }
+        frm.set_df_property('problem_description', 'hidden', 0);
+        if (frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
+            frm.set_df_property('problem_description', 'read_only', 0);
+            frm.fields_dict['problem_description']?.$wrapper?.off('click');
+        }
+        else {
+            if (frm.doc['workflow_state'] === "Pendente") {
+                frm.set_df_property('problem_description', 'read_only', 0);
+                frm.fields_dict['problem_description']?.$wrapper?.off('click');
+            }
+            else {
+                frm.set_df_property('problem_description', 'read_only', 1);
+                frm.fields_dict['problem_description']?.$wrapper?.off('click').on('click', function () {
+                    frappe.msgprint({
+                        title: ('Acesso Negado'),
+                        message: ('Você não tem permissão para editar a descrição do chamado. Contate o administrador.'),
+                        indicator: 'red'
+                    });
+                });
+            }
+        }
+        const allowedUsers = frappe.user.has_role('Information Technology User') ||
+            frappe.user.has_role('System Manager') ||
+            frappe.user.has_role('Administrator');
+        const options = {
+            removeTabs: true,
+            removeSidebar: !allowedUsers,
+            removeAssignments: false,
+            removeAssignmentsButton: false,
+            removeAttachments: false,
+            removeAttachmentsButton: false,
+            removeShared: false,
+            removeTags: false,
+            removeSidebarStats: false,
+            removeSidebarMenu: false,
+            removeSidebarReset: false,
+            removeSidebarToggle: false,
+        };
+        if (agt?.utils?.form?.adjust_html_elements) {
+            agt.utils.form.adjust_html_elements(frm, options);
+        }
+        else {
+            console.error('agt.utils.form.adjust_html_elements não está disponível.');
+        }
+    },
+    first_category(frm) {
+        clearSubsequentCategories(frm, 1);
+        updateOptions(frm, 2);
+        updateOptions(frm, 3);
+        frm.refresh_field('second_category');
+        frm.refresh_field('third_category');
+        checkDocumentEditingOrMaintenance(frm);
+    },
+    second_category(frm) {
+        clearSubsequentCategories(frm, 2);
+        updateOptions(frm, 3);
+        frm.refresh_field('third_category');
+        checkDocumentEditingOrMaintenance(frm);
+    },
+    onload: async (frm) => {
+        await initializeForm(frm);
+    },
     validate: function (frm) {
         const linkFields = Object.keys(frm.doc).filter((field) => field.startsWith('link_'));
         const invalidLinks = [];
@@ -443,21 +425,13 @@ frappe.ui.form.on('IT Request', {
         }
     }
 });
-frappe.ui.form.on('IT Request', {
-    first_category: function (frm) {
-        checkDocumentEditingOrMaintenance(frm);
-    },
-    second_category: function (frm) {
-        checkDocumentEditingOrMaintenance(frm);
-    }
-});
 function checkDocumentEditingOrMaintenance(frm) {
     const isDocumentEditingOrMaintenance = (frm.doc['first_category'] === "Documento" && frm.doc['second_category'] === "Edição") ||
         (frm.doc['first_category'] === "Documento" && frm.doc['second_category'] === "Manutenção");
     if (isDocumentEditingOrMaintenance) {
         frappe.utils.play_sound("alert");
         frappe.show_alert({
-            message: __('Por favor, inclua links relacionados à edição ou manutenção de documentos.'),
+            message: ('Por favor, inclua links relacionados à edição ou manutenção de documentos.'),
             indicator: 'blue'
         }, 5);
     }

@@ -151,49 +151,6 @@ export interface AdjustHTMLOptions {
   removeSidebarToggle?: boolean; // Remove sidebar toggle
 }
 
-/**
- * Growatt custom utilities namespace
- */
-export interface GrowattUtils {
-  utils?: {
-    /**
-     * Adjusts HTML elements in a form based on provided options.
-     * @param frm - The Frappe form instance
-     * @param options - Configuration options for element removal
-     */
-    adjust_html_elements: (frm: FrappeForm, options: AdjustHTMLOptions) => void;
-  };
-  workflow?: {
-    /**
-     * Loads and displays the workflow history field with tracking information.
-     */
-    load_history_field: () => Promise<void>;
-  };
-}
-
-/**
- * Global utilities and functions for IT Request.
- */
-declare global {
-  interface Window {
-    growatt?: GrowattUtils; // Growatt custom utilities
-  }
-  
-  var growatt: GrowattUtils | undefined; // Growatt custom utilities
-  var categories: ITRequestCategories; // IT Request categories constant
-}
-
-/**
- * Extended Frappe interface with additional utilities
- */
-declare module "@anygridtech/frappe-types/client/frappe/core" {
-  interface Frappe {
-    translation?: { // Translation utilities
-      __dict: Record<string, string>;
-    };
-    meta: any; // Meta utilities for doctype information
-  }
-}
 
 /**
  * Utility functions for IT Request form.
@@ -247,7 +204,7 @@ export declare namespace ITRequestUtils {
    * @param fieldInfo - Field information for formatting context
    * @returns Formatted HTML string
    */
-  function formatValue(value: any, fieldInfo: FieldInfo): string;
+  function formatValue(value: string | string[], fieldInfo: FieldInfo): string;
 }
 
 export {};
