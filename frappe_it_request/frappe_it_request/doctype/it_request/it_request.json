@@ -9,8 +9,8 @@
   "section_resolution_deadline",
   "resolution_deadline",
   "informa\u00e7\u00f5es_do_solicitante_section",
-  "applicant_name",
   "applicant",
+  "applicant_name",
   "column_break_bnxk",
   "sector_applicant",
   "email_applicant",
@@ -74,7 +74,8 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "E-mail do solicitante",
-   "options": "User"
+   "options": "User",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_bnxk",
@@ -87,7 +88,7 @@
    "read_only": 1
   },
   {
-   "description": "*N\u00e3o remover",
+   "description": "<b style=\"color: red;\">N\u00e3o remover</b>\n",
    "fieldname": "email_applicant",
    "fieldtype": "Data",
    "hidden": 1,
@@ -280,7 +281,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-22 16:00:59.680393",
+ "modified": "2025-10-24 16:42:16.070644",
  "modified_by": "Administrator",
  "module": "Frappe IT Request",
  "name": "IT Request",

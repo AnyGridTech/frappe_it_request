@@ -7,7 +7,8 @@ import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
  */
 export interface ITRequestDoc extends Record<string, any> {
   name: string;   // The name/ID of the document
-  applicant?: string; // The user who created the request
+  applicant_name?: string; // The user who created the request
+  applicant_email?: string; // E-mail from the user who created the request
   sector_applicant?: string; // The sector/department of the applicant
   employee_sector?: string; // The sector/department of the employee
   first_category?: string; // First level category (Sistema, Documento, Infraestrutura, etc.)
@@ -163,41 +164,41 @@ export declare namespace ITRequestUtils {
    * @param options - Array of option strings
    */
   function setOptions(frm: FrappeForm, fieldName: string, options: string[] | undefined): void;
-  
+
   /**
    * Clears subsequent category fields based on the level.
    * @param frm - The Frappe form instance
    * @param level - The category level (1, 2, or 3)
    */
   function clearSubsequentCategories(frm: FrappeForm, level: number): void;
-  
+
   /**
    * Updates options for category fields based on parent selections.
    * @param frm - The Frappe form instance
    * @param categoryLevel - The category level to update (1, 2, or 3)
    */
   function updateOptions(frm: FrappeForm, categoryLevel: number): void;
-  
+
   /**
    * Initializes the form with default values and options.
    * @param frm - The Frappe form instance
    */
   function initializeForm(frm: FrappeForm): Promise<void>;
-  
+
   /**
    * Checks if the selected categories require document editing or maintenance.
    * Shows an alert if applicable.
    * @param frm - The Frappe form instance
    */
   function checkDocumentEditingOrMaintenance(frm: FrappeForm): void;
-  
+
   /**
    * Gets field information including label, type, and options.
    * @param fieldname - Name of the field
    * @returns Field information object
    */
   function getFieldInfo(fieldname: string): FieldInfo;
-  
+
   /**
    * Formats a value based on field type for display.
    * @param value - The value to format
@@ -207,4 +208,4 @@ export declare namespace ITRequestUtils {
   function formatValue(value: string | string[], fieldInfo: FieldInfo): string;
 }
 
-export {};
+export { };

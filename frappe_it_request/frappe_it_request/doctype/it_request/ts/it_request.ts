@@ -1,6 +1,6 @@
 "use strict"
 import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
-import type { ITRequestCategories } from "./types/frappe_it_request";
+import type { ITRequestCategories } from "./types/it_request";
 
 /**
  * A hierarchical record representing IT request categories and their subcategories.
