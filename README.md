@@ -1,6 +1,13 @@
 ### Frappe IT Request
 
-IT Request doctype.
+This application introduces a new DocType, IT Request, which acts as a centralized support ticket, ensuring that all requests are properly categorized, tracked, and assigned.
+
+## Main Features
+
+- Hierarchical Categorization: Uses a three-level category system (1st Category, 2nd Category, 3rd Category) to accurately classify the type of request (e.g., System > ERPNext > Bug Fixes).
+- Onboarding/Offboarding Flows: Includes specific conditional fields for Onboarding Kit and Offboarding Kit requests, facilitating the management of employee arrivals and departures.
+- Assignment and Deadline: Allows for assigning requests to specific users and establishing a resolution deadline, visible only to the IT team.
+- Data Automation: Automatically fills in requester information, such as email and department, and restricts department selection to a predefined list (e.g., "Administrative", "Logistics", "IT"). - Conditional Fields: The Document Links field (link_doc) is mandatory and displayed only for document Editing or Maintenance requests.
 
 ### Installation
 
