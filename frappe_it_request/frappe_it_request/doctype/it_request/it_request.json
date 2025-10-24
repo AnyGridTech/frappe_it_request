@@ -34,7 +34,6 @@
   "link_doc",
   "internal_tab",
   "section_break_bvis",
-  "responsavel",
   "parent_it_request",
   "lft",
   "rgt",
@@ -46,26 +45,26 @@
   {
    "fieldname": "section_resolution_deadline",
    "fieldtype": "Section Break",
-   "label": "Retorno do T.I."
+   "label": "IT Response"
   },
   {
    "allow_on_submit": 1,
    "columns": 1,
    "fieldname": "resolution_deadline",
    "fieldtype": "Date",
-   "label": "Previs\u00e3o de Retorno",
+   "label": "Return Forecast",
    "show_on_timeline": 1
   },
   {
    "fieldname": "informa\u00e7\u00f5es_do_solicitante_section",
    "fieldtype": "Section Break",
-   "label": "Informa\u00e7\u00f5es do Solicitante"
+   "label": "Requester Info"
   },
   {
    "fetch_from": "applicant.full_name",
    "fieldname": "applicant_name",
    "fieldtype": "Data",
-   "label": "Solicitante",
+   "label": "Requester",
    "read_only": 1,
    "reqd": 1
   },
@@ -73,7 +72,7 @@
    "fieldname": "applicant",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "E-mail do solicitante",
+   "label": "Requester's Email Address",
    "options": "User",
    "reqd": 1
   },
@@ -84,28 +83,28 @@
   {
    "fieldname": "sector_applicant",
    "fieldtype": "Data",
-   "label": "Departamento do Solicitante",
+   "label": "Requester's Department",
    "read_only": 1
   },
   {
-   "description": "<b style=\"color: red;\">N\u00e3o remover</b>\n",
+   "description": "<b style=\"color: red;\">DO NOT REMOVE</b>\n",
    "fieldname": "email_applicant",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "E-mail do solicitante (interno)",
+   "label": "Requester's Email Address (INTERNAL)",
    "options": "Email",
    "read_only": 1
   },
   {
    "fieldname": "first_section",
    "fieldtype": "Section Break",
-   "label": "Informa\u00e7\u00f5es da Solicita\u00e7\u00e3o"
+   "label": "Request Info"
   },
   {
    "fieldname": "first_category",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "1\u00ba Categoria de Solicita\u00e7\u00e3o",
+   "label": "1st Request Category",
    "reqd": 1
   },
   {
@@ -116,7 +115,7 @@
    "fieldname": "second_category",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "2\u00ba Categoria de Solicita\u00e7\u00e3o",
+   "label": "2nd Request Category",
    "reqd": 1
   },
   {
@@ -127,21 +126,21 @@
    "fieldname": "third_category",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "3\u00ba Categoria de Solicita\u00e7\u00e3o",
+   "label": "3rd Request Category",
    "reqd": 1
   },
   {
    "depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n",
    "fieldname": "worker_info_section",
    "fieldtype": "Section Break",
-   "label": "Informa\u00e7\u00f5es do Colaborador"
+   "label": "Employee Info"
   },
   {
    "fieldname": "employee_name",
    "fieldtype": "Data",
    "in_global_search": 1,
    "in_list_view": 1,
-   "label": "Nome do Colaborador",
+   "label": "Employee Name",
    "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\";\r\n"
   },
   {
@@ -149,8 +148,8 @@
    "fieldtype": "Link",
    "in_global_search": 1,
    "in_list_view": 1,
-   "label": "Setor do Colaborador",
-   "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n",
+   "label": "Employee Department",
+   "mandatory_depends_on": "eval:doc.third_category == \"Onboarding Kit\" || doc.third_category == \"Offboarding Kit\"\r\n",
    "options": "User"
   },
   {
@@ -158,62 +157,63 @@
    "fieldtype": "Column Break"
   },
   {
-   "description": "N\u00famero da carteirinha do colaborador (opcional)",
+   "description": "Employee ID number (optional)",
    "fieldname": "employee_id",
    "fieldtype": "Data",
    "in_global_search": 1,
    "in_list_view": 1,
-   "label": "ID"
+   "label": "Employee ID"
   },
   {
-   "description": "<p>- Se for <strong>onboarding</strong>, insira a data prevista para o colaborador come\u00e7ar.</p>\n<p>- Se for <strong>offboarding</strong>, insira a data em que o colaborador foi ou ser\u00e1 desligado.</p>",
+   "description": "<p>- If it is <strong>onboarding</strong>, enter the expected date for the employee to start.</p> <p>- If it is <strong>offboarding</strong>, enter the date on which the employee was or will be terminated.</p>",
    "fieldname": "date_entry",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Data da Aplica\u00e7\u00e3o",
-   "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n"
+   "label": "Application Date",
+   "mandatory_depends_on": "eval:doc.third_category == \"Onboarding Kit\" || doc.third_category == \"Offboarding Kit\"\r\n"
   },
   {
    "fieldname": "second_section",
    "fieldtype": "Section Break",
-   "label": "Detalhes da Solicita\u00e7\u00e3o"
+   "label": "Request Details"
   },
   {
    "fieldname": "subject",
    "fieldtype": "Data",
-   "label": "Assunto",
+   "label": "Subject",
    "reqd": 1
   },
   {
-   "description": "Para chamados que devem ser atribu\u00eddos a uma pessoa espec\u00edfica.",
+   "description": "For requests that must be assigned to a specific person.",
    "fieldname": "assigned_user",
    "fieldtype": "Link",
-   "label": "Destinat\u00e1rio",
+   "label": "Recipient",
    "link_filters": "[[\"User\",\"role\",\"=\",\"Information Technology User\"]]",
    "options": "User"
   },
   {
    "fieldname": "anexo",
    "fieldtype": "Attach",
-   "label": "Anexo"
+   "label": "Attach"
   },
   {
    "allow_on_submit": 1,
    "fieldname": "problem_description",
    "fieldtype": "Text Editor",
-   "label": "Descri\u00e7\u00e3o da Solicita\u00e7\u00e3o",
-   "placeholder": "Escreva detalhadamente a sua solicita\u00e7\u00e3o."
+   "label": "Request Description",
+   "mandatory_depends_on": "eval:doc.first_category == \"Document\" && doc.second_category == \"Editing\"  || doc.first_category == \"Document\" && doc.second_category == \"Maintenance\"\r\n ",
+   "placeholder": "Please write your request in detail."
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval:doc.first_category == \"Documento\" && doc.second_category == \"Edi\u00e7\u00e3o\"  || doc.first_category == \"Documento\" && doc.second_category == \"Manuten\u00e7\u00e3o\"\r\n ",
-   "description": "*Aceita links HTTP/HTTPS \u00fanicos ou m\u00faltiplos separados por v\u00edrgula, espa\u00e7o ou quebra de linha.",
+   "depends_on": "eval:doc.first_category == \"Document\" && doc.second_category == \"Editing\"  || doc.first_category == \"Document\" && doc.second_category == \"Maintenance\"\r\n ",
+   "description": "*Accepts single or multiple HTTP/HTTPS links separated by commas, spaces, or line breaks.",
    "fetch_if_empty": 1,
    "fieldname": "link_doc",
    "fieldtype": "Text",
-   "label": "Links dos Documentos",
+   "label": "Document Links",
    "mandatory_depends_on": "eval:doc.first_category == \"Documento\" && doc.second_category == \"Edi\u00e7\u00e3o\"  || doc.first_category == \"Documento\" && doc.second_category == \"Manuten\u00e7\u00e3o\"\r\n ",
-   "placeholder": "Insira um ou mais links arquivos online, como planilhas e dashboards. OBRIGAT\u00d3RIO para manuten\u00e7\u00e3o e edi\u00e7\u00e3o."
+   "placeholder": "Insert one or more links to online files, such as spreadsheets and dashboards. REQUIRED for maintenance and editing."
   },
   {
    "fieldname": "internal_tab",
@@ -224,12 +224,6 @@
    "fieldname": "section_break_bvis",
    "fieldtype": "Section Break",
    "hidden": 1
-  },
-  {
-   "fieldname": "responsavel",
-   "fieldtype": "Link",
-   "label": "Responsavel",
-   "options": "User"
   },
   {
    "fieldname": "parent_it_request",
@@ -281,7 +275,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-10-24 16:42:16.070644",
+ "modified": "2025-10-24 17:56:27.163814",
  "modified_by": "Administrator",
  "module": "Frappe IT Request",
  "name": "IT Request",

@@ -6,130 +6,130 @@ import type { ITRequestCategories } from "./types/it_request";
  * A hierarchical record representing IT request categories and their subcategories.
  *
  * The structure is organized as follows:
- * - Top-level keys represent main categories (e.g., "Sistema", "Documento", "Infraestrutura (Equipamentos)", etc.).
- * - Each main category contains subcategories (e.g., "Movidesk", "ERPNext", "Edição", "Criação", "Escritório", "Galpão", etc.).
+ * - Top-level keys represent main categories (e.g., "System", "Document", "Infrastructure (Equipment)", etc.).
+ * - Each main category contains subcategories (e.g., "Movidesk", "ERPNext", "Editing", "Creation", "Office", "Warehouse", etc.).
  * - Each subcategory is an array of strings, each string describing a specific type of request or item.
  *
  * This structure is intended for use in forms, dropdowns, or logic that requires categorization of IT-related requests.
  *
  * Example usage:
  * ```typescript
- * const sistemas = categories['Sistema'];
- * const movideskOptions = sistemas['Movidesk'];
+ * const systems = categories['System'];
+ * const movideskOptions = systems['Movidesk'];
  * ```
  */
 
 const categories: ITRequestCategories = {
-  'Sistema': {
+  'System': {
     'Movidesk': [
-      'Campos desaparecidos',
-      'Webhook com problema',
-      'Criação de módulo novo',
-      'Avançar Ticket',
-      'Regredir Ticket',
-      'Campo, Regra e/ou Gatilho',
-      'Painel',
-      'Usuário',
+      'Missing fields',
+      'Webhook issue',
+      'New module creation',
+      'Advance Ticket',
+      'Regress Ticket',
+      'Field, Rule and/or Trigger',
+      'Dashboard',
+      'User',
       'Help Desk',
-      'Ticket sem data',
+      'Ticket without date',
       'Macro',
-      'Relatório',
-      'Outros'
+      'Report',
+      'Others'
     ],
     'ERPNext': [
-      'Usuário/Acessos',
+      'User/Access',
       'Macro',
-      'Automação',
-      'Painel',
+      'Automation',
+      'Dashboard',
       'Script',
-      'Permissões',
-      'Campo, Regra e/ou Gatilho',
-      'Webhook defeituoso',
-      'Teste de Sistema',
+      'Permissions',
+      'Field, Rule and/or Trigger',
+      'Defective webhook',
+      'System Test',
       'Help Desk',
-      'Correções de bugs (erros)',
-      'Sugestões',
-      'Implementações',
-      'Base do Conhecimento',
-      'Outros'
+      'Bug fixes (errors)',
+      'Suggestions',
+      'Implementations',
+      'Knowledge Base',
+      'Others'
     ],
     'API': [
-      'API Logística',
-      'API Fiscal',
-      'API Movidesk',
-      'API ERPNext',
-      'Outros'
+      'Logistics API',
+      'Tax API',
+      'Movidesk API',
+      'ERPNext API',
+      'Others'
     ]
   },
-  'Documento': {
-    'Edição': [
-      'Planilha (Google Sheets/Excel)',
-      'Documento (Google Docs/Word)',
-      'Apresentação (Google Slides/Power Point)',
-      'Formulário (Google Forms)',
-      'Planilha e Formulário (Google Sheets e Google Forms)',
-      'Automatização/Código (Google Apps Script)',
+  'Document': {
+    'Editing': [
+      'Spreadsheet (Google Sheets/Excel)',
+      'Document (Google Docs/Word)',
+      'Presentation (Google Slides/Power Point)',
+      'Form (Google Forms)',
+      'Spreadsheet and Form (Google Sheets and Google Forms)',
+      'Automation/Code (Google Apps Script)',
       'Dashboard (Google Looker Studio)',
-      'Outros'
+      'Others'
     ],
-    'Criação': [
-      'Planilha (Google Sheets/Excel)',
-      'Documento (Google Docs/Word)',
-      'Apresentação (Google Slides/Power Point)',
-      'Formulário (Google Forms)',
-      'Planilha e Formulário (Google Sheets e Google Forms)',
-      'Automatização/Código (Google Apps Script)',
+    'Creation': [
+      'Spreadsheet (Google Sheets/Excel)',
+      'Document (Google Docs/Word)',
+      'Presentation (Google Slides/Power Point)',
+      'Form (Google Forms)',
+      'Spreadsheet and Form (Google Sheets and Google Forms)',
+      'Automation/Code (Google Apps Script)',
       'Dashboard (Google Looker Studio)',
-      'Outros'
+      'Others'
     ],
-    'Manutenção': [
-      'Planilha (Google Sheets/Excel)',
-      'Documento (Google Docs/Word)',
-      'Apresentação (Google Slides/Power Point)',
-      'Formulário (Google Forms)',
-      'Planilha e Formulário (Google Sheets e Google Forms)',
-      'Automatização/Código (Google Apps Script)',
+    'Maintenance': [
+      'Spreadsheet (Google Sheets/Excel)',
+      'Document (Google Docs/Word)',
+      'Presentation (Google Slides/Power Point)',
+      'Form (Google Forms)',
+      'Spreadsheet and Form (Google Sheets and Google Forms)',
+      'Automation/Code (Google Apps Script)',
       'Dashboard (Google Looker Studio)',
-      'Outros'
+      'Others'
     ]
   },
-  'Infraestrutura (Equipamentos)': {
-    'Escritório': [
-      'Kit Onboarding',
-      'Kit Offboarding',
+  'Infrastructure (Equipment)': {
+    'Office': [
+      'Onboarding Kit',
+      'Offboarding Kit',
       'Notebook',
-      'Celular',
-      'Impressora',
-      'Câmeras',
-      'Periféricos',
+      'Mobile Phone',
+      'Printer',
+      'Cameras',
+      'Peripherals',
       'Internet',
-      'Outros'
+      'Others'
     ],
-    'Galpão': [
-      'Kit Onboarding',
-      'Kit Offboarding',
+    'Warehouse': [
+      'Onboarding Kit',
+      'Offboarding Kit',
       'Notebook',
-      'Celular',
-      'Impressora',
-      'Câmeras',
-      'Periféricos',
+      'Mobile Phone',
+      'Printer',
+      'Cameras',
+      'Peripherals',
       'Internet',
-      'Outros'
+      'Others'
     ],
-    'Escritório e Galpão': [
-      'Kit Onboarding',
-      'Kit Offboarding',
+    'Office and Warehouse': [
+      'Onboarding Kit',
+      'Offboarding Kit',
       'Notebook',
-      'Celular',
-      'Impressora',
-      'Câmeras',
-      'Periféricos',
+      'Mobile Phone',
+      'Printer',
+      'Cameras',
+      'Peripherals',
       'Internet',
-      'Outros'
+      'Others'
     ]
   },
-  'Infraestrutura (Aplicações)': {
-    'Escritório': [
+  'Infrastructure (Applications)': {
+    'Office': [
       'Windows',
       'Intelbras',
       'Feishu/Lark',
@@ -137,9 +137,9 @@ const categories: ITRequestCategories = {
       'SAP',
       'Shinebus',
       'E-Mail',
-      'Outros'
+      'Others'
     ],
-    'Galpão': [
+    'Warehouse': [
       'Windows',
       'Intelbras',
       'Feishu/Lark',
@@ -147,9 +147,9 @@ const categories: ITRequestCategories = {
       'SAP',
       'Shinebus',
       'E-Mail',
-      'Outros'
+      'Others'
     ],
-    'Escritório e Galpão': [
+    'Office and Warehouse': [
       'Windows',
       'Intelbras',
       'Feishu/Lark',
@@ -157,40 +157,40 @@ const categories: ITRequestCategories = {
       'SAP',
       'Shinebus',
       'E-Mail',
-      'Outros'
+      'Others'
     ]
   },
-  'Recursos Humanos': {
-    'Escritório': [
-      'Kit Onboarding',
-      'Kit Offboarding',
-      'Outros'
+  'Human Resources': {
+    'Office': [
+      'Onboarding Kit',
+      'Offboarding Kit',
+      'Others'
     ],
-    'Galpão': [
-      'Kit Onboarding',
-      'Kit Offboarding',
-      'Outros'
+    'Warehouse': [
+      'Onboarding Kit',
+      'Offboarding Kit',
+      'Others'
     ],
-    'Escritório e Galpão': [
-      'Kit Onboarding',
-      'Kit Offboarding',
-      'Outros'
+    'Office and Warehouse': [
+      'Onboarding Kit',
+      'Offboarding Kit',
+      'Others'
     ]
   }
 };
 
 function setOptions(frm: FrappeForm, fieldName: string, options: string[] | undefined): void {
-  let effectiveOptions = options || []; // Garante que seja um array
-  // let newOptions = [""]; // Mantendo a lógica original, mesmo que newOptions não seja explicitamente usada depois
+  let effectiveOptions = options || []; // Ensures it's an array
+  // let newOptions = [""]; // Keeping the original logic, even though newOptions is not explicitly used afterwards
 
   const currentVal = frm.doc[fieldName];
-  // Mantendo a lógica original de adicionar o valor atual no início se ele não estiver na lista
+  // Keeping the original logic of adding the current value at the beginning if it's not in the list
   if (currentVal && !effectiveOptions.includes(currentVal)) {
-    // O método unshift modifica o array original, como no JS
+    // The unshift method modifies the original array, as in JS
     effectiveOptions.unshift(currentVal);
   }
 
-  // Assumindo que a intenção era sempre ter a opção em branco:
+  // Assuming the intention was always to have a blank option:
   frm.set_df_property(fieldName, 'options', ["", ...effectiveOptions]);
 }
 
@@ -239,8 +239,8 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
   if (!frm.doc['applicant']) {
     frm.set_value("applicant", frappe.session.user as string);
   }
-  // Sempre buscar o setor do solicitante quando a função for chamada
-  // Isso garantirá que o setor seja atualizado quando o solicitante mudar
+  // Always fetch the applicant's sector when the function is called
+  // This will ensure the sector is updated when the applicant changes
   if (frm.doc['applicant']) {
     try {
       const r = await frappe.db.get_value('User', frm.doc['applicant'], 'internal_department');
@@ -248,15 +248,15 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
         frm.set_value("sector_applicant", r.message.internal_department);
         frm.refresh_field('sector_applicant');
       } else {
-        // Limpa o campo se não encontrar um departamento
+        // Clear the field if no department is found
         frm.set_value("sector_applicant", null);
         frm.refresh_field('sector_applicant');
       }
     } catch (error) {
-      console.error("Erro ao buscar setor do solicitante:", error);
+      console.error("Error fetching applicant's sector:", error);
       frappe.msgprint({
-        title: ('Erro'),
-        message: ('Não foi possível obter o setor do solicitante. Por favor, selecione manualmente.'),
+        title: ('Error'),
+        message: ('Unable to retrieve the applicant\'s sector. Please select manually.'),
         indicator: 'red'
       });
     }
@@ -304,18 +304,18 @@ frappe.ui.form.on('IT Request', {
   },
   
   refresh: async function (frm: FrappeForm) {
-    // Inicializar formulário
+    // Initialize form
     await initializeForm(frm);
     
-    // Código responsável por bloquear a edição do campo "resolution_deadline"
+    // Code responsible for blocking the editing of the "resolution_deadline" field
     frm.set_df_property('resolution_deadline', 'hidden', 0);
     
     if (!frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
       frm.set_df_property('resolution_deadline', 'read_only', 1);
       frm.fields_dict['resolution_deadline']?.$wrapper?.on('click', function () {
         frappe.msgprint({
-          title: ('Acesso Negado'),
-          message: ('Você não tem permissão para editar o prazo de resolução do chamado.'),
+          title: ('Access Denied'),
+          message: ('You do not have permission to edit the request resolution deadline.'),
           indicator: 'red'
         });
       });
@@ -324,29 +324,29 @@ frappe.ui.form.on('IT Request', {
       frm.fields_dict['resolution_deadline']?.$wrapper?.off('click');
     }
     
-    // Código do campo de 'problem_description'
+    // Code for the 'problem_description' field
     frm.set_df_property('problem_description', 'hidden', 0);
     
     if (frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
       frm.set_df_property('problem_description', 'read_only', 0);
       frm.fields_dict['problem_description']?.$wrapper?.off('click');
     } else {
-      if (frm.doc['workflow_state'] === "Pendente") {
+      if (frm.doc['workflow_state'] === "Pending") {
         frm.set_df_property('problem_description', 'read_only', 0);
         frm.fields_dict['problem_description']?.$wrapper?.off('click');
       } else {
         frm.set_df_property('problem_description', 'read_only', 1);
         frm.fields_dict['problem_description']?.$wrapper?.off('click').on('click', function () {
           frappe.msgprint({
-            title: ('Acesso Negado'),
-            message: ('Você não tem permissão para editar a descrição do chamado. Contate o administrador.'),
+            title: ('Access Denied'),
+            message: ('You do not have permission to edit the request description. Contact the administrator.'),
             indicator: 'red'
           });
         });
       }
     }
     
-    // Ajustes de elementos HTML do formulário
+    // Form HTML elements adjustments
     const allowedUsers = frappe.user.has_role('Information Technology User') || 
                          frappe.user.has_role('System Manager') || 
                          frappe.user.has_role('Administrator');
@@ -369,7 +369,7 @@ frappe.ui.form.on('IT Request', {
     if (agt?.utils?.form?.adjust_html_elements) {
       agt.utils.form.adjust_html_elements(frm, options);
     } else {
-      console.error('agt.utils.form.adjust_html_elements não está disponível.');
+      console.error('agt.utils.form.adjust_html_elements is not available.');
     }
   },
 
@@ -398,7 +398,7 @@ frappe.ui.form.on('IT Request', {
     const invalidLinks: string[] = [];
     const emptyLinkFields: string[] = [];
     const emptyRequiredFields: string[] = [];
-    // Regex mais flexível para aceitar URLs complexas do Google e outros serviços
+    // More flexible regex to accept complex URLs from Google and other services
     const urlRegex = /^https?:\/\/(?:www\.)?[\w\-\.]+(?:\.[a-zA-Z]{2,})+(?:\/[\w\-\._~:\/?#\[\]@!$&'()*+,;=%]*)?$/i;
 
     // Check link_ fields
@@ -415,7 +415,7 @@ frappe.ui.form.on('IT Request', {
       // Extract links using multiple strategies
       let links: string[] = [];
 
-      // Strategy 1: Extract URLs using regex first (mais preciso)
+      // Strategy 1: Extract URLs using regex first (more precise)
       const urlMatches = value.match(/https?:\/\/[^\s,]+/g);
       if (urlMatches) {
         links.push(...urlMatches);
@@ -458,15 +458,15 @@ frappe.ui.form.on('IT Request', {
 
     // Prepare and throw errors for empty required fields
     if (emptyRequiredFields.length > 0) {
-      frappe.utils.play_sound("error"); // Some cool sound effect to get the user's attention
+      frappe.utils.play_sound("error"); // Error sound to get user's attention
 
       const plural = emptyRequiredFields.length > 1;
       frappe.throw({
-        title: plural ? 'Campos obrigatórios' : 'Campo obrigatório',
+        title: plural ? 'Required fields' : 'Required field',
         message: `
                     <div>
-                        ${plural ? 'Os seguintes campos são obrigatórios e não podem estar vazios:'
-            : 'O seguinte campo é obrigatório e não pode estar vazio:'}
+                        ${plural ? 'The following fields are required and cannot be empty:'
+            : 'The following field is required and cannot be empty:'}
                         <br><br>
                         <ul>
                             ${emptyRequiredFields.map(field => `<li>${field}</li>`).join('')}
@@ -478,15 +478,15 @@ frappe.ui.form.on('IT Request', {
 
     // Prepare and throw errors for empty link fields
     if (emptyLinkFields.length > 0) {
-      frappe.utils.play_sound("error"); // Some cool sound effect to get the user's attention
+      frappe.utils.play_sound("error"); // Error sound to get user's attention
 
       const plural = emptyLinkFields.length > 1;
       frappe.throw({
-        title: plural ? 'Campos de link obrigatórios' : 'Campo de link obrigatório',
+        title: plural ? 'Required link fields' : 'Required link field',
         message: `
                     <div>
-                        ${plural ? 'Os seguintes campos de link são obrigatórios e não podem estar vazios:'
-            : 'O seguinte campo de link é obrigatório e não pode estar vazio:'}
+                        ${plural ? 'The following link fields are required and cannot be empty:'
+            : 'The following link field is required and cannot be empty:'}
                         <br><br>
                         <ul>
                             ${emptyLinkFields.map(field => `<li>${field}</li>`).join('')}
@@ -498,15 +498,15 @@ frappe.ui.form.on('IT Request', {
 
     // Prepare and throw errors for invalid links
     // if (invalidLinks.length > 0) {
-    //   frappe.utils.play_sound("error"); // Some cool sound effect to get the user's attention
+    //   frappe.utils.play_sound("error"); // Error sound to get user's attention
 
     //   const plural = invalidLinks.length > 1;
     //   frappe.throw({
-    //     title: plural ? 'Links inválidos' : 'Link inválido',
+    //     title: plural ? 'Invalid links' : 'Invalid link',
     //     message: `
     //                 <div>
-    //                     ${plural ? 'Os seguintes links não são válidos:'
-    //         : 'O seguinte link não é válido:'}
+    //                     ${plural ? 'The following links are not valid:'
+    //         : 'The following link is not valid:'}
     //                     <br><br>
     //                     <ul>
     //                         ${invalidLinks.map(link => `<li>${link}</li>`).join('')}
@@ -520,13 +520,13 @@ frappe.ui.form.on('IT Request', {
 
 function checkDocumentEditingOrMaintenance(frm: FrappeForm): void {
   const isDocumentEditingOrMaintenance =
-    (frm.doc['first_category'] === "Documento" && frm.doc['second_category'] === "Edição") ||
-    (frm.doc['first_category'] === "Documento" && frm.doc['second_category'] === "Manutenção");
+    (frm.doc['first_category'] === "Document" && frm.doc['second_category'] === "Editing") ||
+    (frm.doc['first_category'] === "Document" && frm.doc['second_category'] === "Maintenance");
 
   if (isDocumentEditingOrMaintenance) {
-    frappe.utils.play_sound("alert"); // Some cool sound effect to get the user's attention
+    frappe.utils.play_sound("alert"); // Alert sound to get user's attention
     frappe.show_alert({
-      message: ('Por favor, inclua links relacionados à edição ou manutenção de documentos.'),
+      message: ('Please include links related to document editing or maintenance.'),
       indicator: 'blue'
     }, 5);
   }

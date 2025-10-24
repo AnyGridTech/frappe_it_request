@@ -34,39 +34,39 @@ export type CategoryMap = Record<string, SubcategoryOptions>;
  * Hierarchical structure of IT Request categories.
  * 
  * Structure:
- * - Top-level: Main categories (Sistema, Documento, Infraestrutura, etc.)
- * - Second-level: Subcategories (Movidesk, ERPNext, Edição, etc.)
+ * - Top-level: Main categories (System, Document, Infrastructure, etc.)
+ * - Second-level: Subcategories (Movidesk, ERPNext, Editing, etc.)
  * - Third-level: Specific request types (arrays of strings)
  */
 export interface ITRequestCategories {
-  'Sistema': { // System-related requests
+  'System': { // System-related requests
     'Movidesk': SubcategoryOptions;
     'ERPNext': SubcategoryOptions;
     'API': SubcategoryOptions;
     [key: string]: SubcategoryOptions;
   };
-  'Documento': { // Document-related requests
-    'Edição': SubcategoryOptions;
-    'Criação': SubcategoryOptions;
-    'Manutenção': SubcategoryOptions;
+  'Document': { // Document-related requests
+    'Editing': SubcategoryOptions;
+    'Creation': SubcategoryOptions;
+    'Maintenance': SubcategoryOptions;
     [key: string]: SubcategoryOptions;
   };
-  'Infraestrutura (Equipamentos)': { // Infrastructure equipment requests
-    'Escritório': SubcategoryOptions;
-    'Galpão': SubcategoryOptions;
-    'Escritório e Galpão': SubcategoryOptions;
+  'Infrastructure (Equipment)': { // Infrastructure equipment requests
+    'Office': SubcategoryOptions;
+    'Warehouse': SubcategoryOptions;
+    'Office and Warehouse': SubcategoryOptions;
     [key: string]: SubcategoryOptions;
   };
-  'Infraestrutura (Aplicações)': { // Infrastructure applications requests
-    'Escritório': SubcategoryOptions;
-    'Galpão': SubcategoryOptions;
-    'Escritório e Galpão': SubcategoryOptions;
+  'Infrastructure (Applications)': { // Infrastructure applications requests
+    'Office': SubcategoryOptions;
+    'Warehouse': SubcategoryOptions;
+    'Office and Warehouse': SubcategoryOptions;
     [key: string]: SubcategoryOptions;
   };
-  'Recursos Humanos': { // Human Resources requests
-    'Escritório': SubcategoryOptions;
-    'Galpão': SubcategoryOptions;
-    'Escritório e Galpão': SubcategoryOptions;
+  'Human Resources': { // Human Resources requests
+    'Office': SubcategoryOptions;
+    'Warehouse': SubcategoryOptions;
+    'Office and Warehouse': SubcategoryOptions;
     [key: string]: SubcategoryOptions;
   };
   [key: string]: CategoryMap; // Allow dynamic string indexing

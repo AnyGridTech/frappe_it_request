@@ -4,116 +4,116 @@
 (() => {
   // frappe_it_request/doctype/it_request/ts/it_request.ts
   var categories = {
-    "Sistema": {
+    "System": {
       "Movidesk": [
-        "Campos desaparecidos",
-        "Webhook com problema",
-        "Cria\xE7\xE3o de m\xF3dulo novo",
-        "Avan\xE7ar Ticket",
-        "Regredir Ticket",
-        "Campo, Regra e/ou Gatilho",
-        "Painel",
-        "Usu\xE1rio",
+        "Missing fields",
+        "Webhook issue",
+        "New module creation",
+        "Advance Ticket",
+        "Regress Ticket",
+        "Field, Rule and/or Trigger",
+        "Dashboard",
+        "User",
         "Help Desk",
-        "Ticket sem data",
+        "Ticket without date",
         "Macro",
-        "Relat\xF3rio",
-        "Outros"
+        "Report",
+        "Others"
       ],
       "ERPNext": [
-        "Usu\xE1rio/Acessos",
+        "User/Access",
         "Macro",
-        "Automa\xE7\xE3o",
-        "Painel",
+        "Automation",
+        "Dashboard",
         "Script",
-        "Permiss\xF5es",
-        "Campo, Regra e/ou Gatilho",
-        "Webhook defeituoso",
-        "Teste de Sistema",
+        "Permissions",
+        "Field, Rule and/or Trigger",
+        "Defective webhook",
+        "System Test",
         "Help Desk",
-        "Corre\xE7\xF5es de bugs (erros)",
-        "Sugest\xF5es",
-        "Implementa\xE7\xF5es",
-        "Base do Conhecimento",
-        "Outros"
+        "Bug fixes (errors)",
+        "Suggestions",
+        "Implementations",
+        "Knowledge Base",
+        "Others"
       ],
       "API": [
-        "API Log\xEDstica",
-        "API Fiscal",
-        "API Movidesk",
-        "API ERPNext",
-        "Outros"
+        "Logistics API",
+        "Tax API",
+        "Movidesk API",
+        "ERPNext API",
+        "Others"
       ]
     },
-    "Documento": {
-      "Edi\xE7\xE3o": [
-        "Planilha (Google Sheets/Excel)",
-        "Documento (Google Docs/Word)",
-        "Apresenta\xE7\xE3o (Google Slides/Power Point)",
-        "Formul\xE1rio (Google Forms)",
-        "Planilha e Formul\xE1rio (Google Sheets e Google Forms)",
-        "Automatiza\xE7\xE3o/C\xF3digo (Google Apps Script)",
+    "Document": {
+      "Editing": [
+        "Spreadsheet (Google Sheets/Excel)",
+        "Document (Google Docs/Word)",
+        "Presentation (Google Slides/Power Point)",
+        "Form (Google Forms)",
+        "Spreadsheet and Form (Google Sheets and Google Forms)",
+        "Automation/Code (Google Apps Script)",
         "Dashboard (Google Looker Studio)",
-        "Outros"
+        "Others"
       ],
-      "Cria\xE7\xE3o": [
-        "Planilha (Google Sheets/Excel)",
-        "Documento (Google Docs/Word)",
-        "Apresenta\xE7\xE3o (Google Slides/Power Point)",
-        "Formul\xE1rio (Google Forms)",
-        "Planilha e Formul\xE1rio (Google Sheets e Google Forms)",
-        "Automatiza\xE7\xE3o/C\xF3digo (Google Apps Script)",
+      "Creation": [
+        "Spreadsheet (Google Sheets/Excel)",
+        "Document (Google Docs/Word)",
+        "Presentation (Google Slides/Power Point)",
+        "Form (Google Forms)",
+        "Spreadsheet and Form (Google Sheets and Google Forms)",
+        "Automation/Code (Google Apps Script)",
         "Dashboard (Google Looker Studio)",
-        "Outros"
+        "Others"
       ],
-      "Manuten\xE7\xE3o": [
-        "Planilha (Google Sheets/Excel)",
-        "Documento (Google Docs/Word)",
-        "Apresenta\xE7\xE3o (Google Slides/Power Point)",
-        "Formul\xE1rio (Google Forms)",
-        "Planilha e Formul\xE1rio (Google Sheets e Google Forms)",
-        "Automatiza\xE7\xE3o/C\xF3digo (Google Apps Script)",
+      "Maintenance": [
+        "Spreadsheet (Google Sheets/Excel)",
+        "Document (Google Docs/Word)",
+        "Presentation (Google Slides/Power Point)",
+        "Form (Google Forms)",
+        "Spreadsheet and Form (Google Sheets and Google Forms)",
+        "Automation/Code (Google Apps Script)",
         "Dashboard (Google Looker Studio)",
-        "Outros"
+        "Others"
       ]
     },
-    "Infraestrutura (Equipamentos)": {
-      "Escrit\xF3rio": [
-        "Kit Onboarding",
-        "Kit Offboarding",
+    "Infrastructure (Equipment)": {
+      "Office": [
+        "Onboarding Kit",
+        "Offboarding Kit",
         "Notebook",
-        "Celular",
-        "Impressora",
-        "C\xE2meras",
-        "Perif\xE9ricos",
+        "Mobile Phone",
+        "Printer",
+        "Cameras",
+        "Peripherals",
         "Internet",
-        "Outros"
+        "Others"
       ],
-      "Galp\xE3o": [
-        "Kit Onboarding",
-        "Kit Offboarding",
+      "Warehouse": [
+        "Onboarding Kit",
+        "Offboarding Kit",
         "Notebook",
-        "Celular",
-        "Impressora",
-        "C\xE2meras",
-        "Perif\xE9ricos",
+        "Mobile Phone",
+        "Printer",
+        "Cameras",
+        "Peripherals",
         "Internet",
-        "Outros"
+        "Others"
       ],
-      "Escrit\xF3rio e Galp\xE3o": [
-        "Kit Onboarding",
-        "Kit Offboarding",
+      "Office and Warehouse": [
+        "Onboarding Kit",
+        "Offboarding Kit",
         "Notebook",
-        "Celular",
-        "Impressora",
-        "C\xE2meras",
-        "Perif\xE9ricos",
+        "Mobile Phone",
+        "Printer",
+        "Cameras",
+        "Peripherals",
         "Internet",
-        "Outros"
+        "Others"
       ]
     },
-    "Infraestrutura (Aplica\xE7\xF5es)": {
-      "Escrit\xF3rio": [
+    "Infrastructure (Applications)": {
+      "Office": [
         "Windows",
         "Intelbras",
         "Feishu/Lark",
@@ -121,9 +121,9 @@
         "SAP",
         "Shinebus",
         "E-Mail",
-        "Outros"
+        "Others"
       ],
-      "Galp\xE3o": [
+      "Warehouse": [
         "Windows",
         "Intelbras",
         "Feishu/Lark",
@@ -131,9 +131,9 @@
         "SAP",
         "Shinebus",
         "E-Mail",
-        "Outros"
+        "Others"
       ],
-      "Escrit\xF3rio e Galp\xE3o": [
+      "Office and Warehouse": [
         "Windows",
         "Intelbras",
         "Feishu/Lark",
@@ -141,24 +141,24 @@
         "SAP",
         "Shinebus",
         "E-Mail",
-        "Outros"
+        "Others"
       ]
     },
-    "Recursos Humanos": {
-      "Escrit\xF3rio": [
-        "Kit Onboarding",
-        "Kit Offboarding",
-        "Outros"
+    "Human Resources": {
+      "Office": [
+        "Onboarding Kit",
+        "Offboarding Kit",
+        "Others"
       ],
-      "Galp\xE3o": [
-        "Kit Onboarding",
-        "Kit Offboarding",
-        "Outros"
+      "Warehouse": [
+        "Onboarding Kit",
+        "Offboarding Kit",
+        "Others"
       ],
-      "Escrit\xF3rio e Galp\xE3o": [
-        "Kit Onboarding",
-        "Kit Offboarding",
-        "Outros"
+      "Office and Warehouse": [
+        "Onboarding Kit",
+        "Offboarding Kit",
+        "Others"
       ]
     }
   };
@@ -223,10 +223,10 @@
           frm.refresh_field("sector_applicant");
         }
       } catch (error) {
-        console.error("Erro ao buscar setor do solicitante:", error);
+        console.error("Error fetching applicant's sector:", error);
         frappe.msgprint({
-          title: "Erro",
-          message: "N\xE3o foi poss\xEDvel obter o setor do solicitante. Por favor, selecione manualmente.",
+          title: "Error",
+          message: "Unable to retrieve the applicant's sector. Please select manually.",
           indicator: "red"
         });
       }
@@ -274,8 +274,8 @@
         frm.set_df_property("resolution_deadline", "read_only", 1);
         frm.fields_dict["resolution_deadline"]?.$wrapper?.on("click", function() {
           frappe.msgprint({
-            title: "Acesso Negado",
-            message: "Voc\xEA n\xE3o tem permiss\xE3o para editar o prazo de resolu\xE7\xE3o do chamado.",
+            title: "Access Denied",
+            message: "You do not have permission to edit the request resolution deadline.",
             indicator: "red"
           });
         });
@@ -288,15 +288,15 @@
         frm.set_df_property("problem_description", "read_only", 0);
         frm.fields_dict["problem_description"]?.$wrapper?.off("click");
       } else {
-        if (frm.doc["workflow_state"] === "Pendente") {
+        if (frm.doc["workflow_state"] === "Pending") {
           frm.set_df_property("problem_description", "read_only", 0);
           frm.fields_dict["problem_description"]?.$wrapper?.off("click");
         } else {
           frm.set_df_property("problem_description", "read_only", 1);
           frm.fields_dict["problem_description"]?.$wrapper?.off("click").on("click", function() {
             frappe.msgprint({
-              title: "Acesso Negado",
-              message: "Voc\xEA n\xE3o tem permiss\xE3o para editar a descri\xE7\xE3o do chamado. Contate o administrador.",
+              title: "Access Denied",
+              message: "You do not have permission to edit the request description. Contact the administrator.",
               indicator: "red"
             });
           });
@@ -320,7 +320,7 @@
       if (agt?.utils?.form?.adjust_html_elements) {
         agt.utils.form.adjust_html_elements(frm, options);
       } else {
-        console.error("agt.utils.form.adjust_html_elements n\xE3o est\xE1 dispon\xEDvel.");
+        console.error("agt.utils.form.adjust_html_elements is not available.");
       }
     },
     first_category(frm) {
@@ -384,10 +384,10 @@
         frappe.utils.play_sound("error");
         const plural = emptyRequiredFields.length > 1;
         frappe.throw({
-          title: plural ? "Campos obrigat\xF3rios" : "Campo obrigat\xF3rio",
+          title: plural ? "Required fields" : "Required field",
           message: `
                     <div>
-                        ${plural ? "Os seguintes campos s\xE3o obrigat\xF3rios e n\xE3o podem estar vazios:" : "O seguinte campo \xE9 obrigat\xF3rio e n\xE3o pode estar vazio:"}
+                        ${plural ? "The following fields are required and cannot be empty:" : "The following field is required and cannot be empty:"}
                         <br><br>
                         <ul>
                             ${emptyRequiredFields.map((field) => `<li>${field}</li>`).join("")}
@@ -400,10 +400,10 @@
         frappe.utils.play_sound("error");
         const plural = emptyLinkFields.length > 1;
         frappe.throw({
-          title: plural ? "Campos de link obrigat\xF3rios" : "Campo de link obrigat\xF3rio",
+          title: plural ? "Required link fields" : "Required link field",
           message: `
                     <div>
-                        ${plural ? "Os seguintes campos de link s\xE3o obrigat\xF3rios e n\xE3o podem estar vazios:" : "O seguinte campo de link \xE9 obrigat\xF3rio e n\xE3o pode estar vazio:"}
+                        ${plural ? "The following link fields are required and cannot be empty:" : "The following link field is required and cannot be empty:"}
                         <br><br>
                         <ul>
                             ${emptyLinkFields.map((field) => `<li>${field}</li>`).join("")}
@@ -415,11 +415,11 @@
     }
   });
   function checkDocumentEditingOrMaintenance(frm) {
-    const isDocumentEditingOrMaintenance = frm.doc["first_category"] === "Documento" && frm.doc["second_category"] === "Edi\xE7\xE3o" || frm.doc["first_category"] === "Documento" && frm.doc["second_category"] === "Manuten\xE7\xE3o";
+    const isDocumentEditingOrMaintenance = frm.doc["first_category"] === "Document" && frm.doc["second_category"] === "Editing" || frm.doc["first_category"] === "Document" && frm.doc["second_category"] === "Maintenance";
     if (isDocumentEditingOrMaintenance) {
       frappe.utils.play_sound("alert");
       frappe.show_alert({
-        message: "Por favor, inclua links relacionados \xE0 edi\xE7\xE3o ou manuten\xE7\xE3o de documentos.",
+        message: "Please include links related to document editing or maintenance.",
         indicator: "blue"
       }, 5);
     }
