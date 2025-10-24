@@ -19,7 +19,6 @@ import type { ITRequestCategories } from "./types/frappe_it_request";
  * ```
  */
 
-
 const categories: ITRequestCategories = {
   'Sistema': {
     'Movidesk': [
