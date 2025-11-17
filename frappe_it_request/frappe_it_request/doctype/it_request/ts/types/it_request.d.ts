@@ -18,6 +18,7 @@ export interface ITRequestDoc extends Record<string, any> {
   resolution_deadline?: string; // Deadline for resolution
   workflow_state?: string; // Current workflow state
   custom_workflow_history?: string; // Custom workflow history HTML field
+  attach?: string; // Attachments
 }
 
 /**

@@ -1,0 +1,129 @@
+Error,Erro
+Access Denied,Acesso Negado
+You do not have permission to edit the request resolution deadline.,Você não tem permissão para editar o prazo de resolução do chamado.
+You do not have permission to edit the request description. Contact the administrator.,Você não tem permissão para editar a descrição do chamado. Contate o administrador.
+Unable to retrieve the applicant's sector. Please select manually.,Não foi possível obter o setor do solicitante. Por favor, selecione manualmente.
+Please include links related to document editing or maintenance.,Por favor, inclua links relacionados à edição ou manutenção de documentos.
+Required fields,Campos obrigatórios
+Required field,Campo obrigatório
+The following fields are required and cannot be empty:,Os seguintes campos são obrigatórios e não podem estar vazios:
+The following field is required and cannot be empty:,O seguinte campo é obrigatório e não pode estar vazio:
+Required link fields,Campos de link obrigatórios
+Required link field,Campo de link obrigatório
+The following link fields are required and cannot be empty:,Os seguintes campos de link são obrigatórios e não podem estar vazios:
+The following link field is required and cannot be empty:,O seguinte campo de link é obrigatório e não pode estar vazio:
+Invalid links,Links inválidos
+Invalid link,Link inválido
+The following links are not valid:,Os seguintes links não são válidos:
+The following link is not valid:,O seguinte link não é válido:
+IT Response,Resposta de TI
+Return Forecast,Previsão de Retorno
+Requester Info,Informações do Solicitante
+Requester,Solicitante
+Requester's Email Address,E-mail do Solicitante
+Requester's Department,Departamento do Solicitante
+Requester's Email Address (INTERNAL),E-mail do Solicitante (INTERNO)
+Request Info,Informações da Solicitação
+1st Request Category,1ª Categoria da Solicitação
+2nd Request Category,2ª Categoria da Solicitação
+3rd Request Category,3ª Categoria da Solicitação
+Employee Info,Informações do Funcionário
+Employee Name,Nome do Funcionário
+Employee Department,Departamento do Funcionário
+Employee ID,ID do Funcionário
+Employee ID number (optional),Número de ID do Funcionário (opcional)
+Application Date,Data de Aplicação
+Request Details,Detalhes da Solicitação
+Subject,Assunto
+Recipient,Destinatário
+For requests that must be assigned to a specific person.,Para solicitações que devem ser atribuídas a uma pessoa específica.
+Attach,Anexar
+Request Description,Descrição da Solicitação
+Please write your request in detail.,Por favor escreva sua solicitação em detalhes.
+Document Links,Links de Documentos
+*Accepts single or multiple HTTP/HTTPS links separated by commas, spaces, or line breaks.,*Aceita um ou vários links HTTP/HTTPS separados por vírgulas, espaços ou quebras de linha.
+Insert one or more links to online files, such as spreadsheets and dashboards. REQUIRED for maintenance and editing.,Insira um ou mais links para arquivos online, como planilhas e painéis. OBRIGATÓRIO para manutenção e edição.
+Internal,Interno
+Parent IT Request,Solicitação de TI Pai
+Left,Esquerda
+Right,Direita
+Is Group,É Grupo
+Old Parent,Pai Antigo
+Amended From,Emendado De
+System,Sistema
+Document,Documento
+Infrastructure (Equipment),Infraestrutura (Equipamentos)
+Infrastructure (Applications),Infraestrutura (Aplicações)
+Human Resources,Recursos Humanos
+Movidesk,Movidesk
+ERPNext,ERPNext
+API,API
+Editing,Edição
+Creation,Criação
+Maintenance,Manutenção
+Office,Escritório
+Warehouse,Galpão
+Office and Warehouse,Escritório e Galpão
+Document,Documento
+Infrastructure (Equipment),Infraestrutura (Equipamentos)
+Infrastructure (Applications),Infraestrutura (Aplicações)
+Human Resources,Recursos Humanos
+Movidesk,Movidesk
+ERPNext,ERPNext
+API,API
+Editing,Edição
+Creation,Criação
+Maintenance,Manutenção
+Office,Escritório
+Warehouse,Galpão
+Office and Warehouse,Escritório e Galpão
+Missing fields,Campos desaparecidos
+Webhook issue,Webhook com problema
+New module creation,Criação de módulo novo
+Advance Ticket,Avançar Ticket
+Regress Ticket,Regredir Ticket
+"Field, Rule and/or Trigger","Campo, Regra e/ou Gatilho"
+Dashboard,Painel
+User,Usuário
+Help Desk,Help Desk
+Ticket without date,Ticket sem data
+Macro,Macro
+Report,Relatório
+Others,Outros
+User/Access,Usuário/Acessos
+Automation,Automação
+Script,Script
+Permissions,Permissões
+Defective webhook,Webhook defeituoso
+System Test,Teste de Sistema
+Bug fixes (errors),Correções de bugs (erros)
+Suggestions,Sugestões
+Implementations,Implementações
+Knowledge Base,Base do Conhecimento
+Logistics API,API Logística
+Tax API,API Fiscal
+Movidesk API,API Movidesk
+ERPNext API,API ERPNext
+Spreadsheet (Google Sheets/Excel),Planilha (Google Sheets/Excel)
+Document (Google Docs/Word),Documento (Google Docs/Word)
+Presentation (Google Slides/Power Point),Apresentação (Google Slides/Power Point)
+Form (Google Forms),Formulário (Google Forms)
+Spreadsheet and Form (Google Sheets and Google Forms),Planilha e Formulário (Google Sheets e Google Forms)
+Automation/Code (Google Apps Script),Automatização/Código (Google Apps Script)
+Dashboard (Google Looker Studio),Dashboard (Google Looker Studio)
+Onboarding Kit,Kit Onboarding
+Offboarding Kit,Kit Offboarding
+Notebook,Notebook
+Mobile Phone,Celular
+Printer,Impressora
+Cameras,Câmeras
+Peripherals,Periféricos
+Internet,Internet
+Windows,Windows
+Intelbras,Intelbras
+Feishu/Lark,Feishu/Lark
+OA,OA
+SAP,SAP
+Shinebus,Shinebus
+E-Mail,E-Mail
+IT Request,Solicitação de TI

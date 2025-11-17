@@ -233,6 +233,7 @@ function updateOptions(frm: FrappeForm, categoryLevel: number): void {
       setOptions(frm, 'third_category', options);
       break;
   }
+  frm.set_df_property('problem_description', 'placeholder', __('Please write your request in detail.'));
 }
 
 async function initializeForm(frm: FrappeForm): Promise<void> {
@@ -255,8 +256,8 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
     } catch (error) {
       console.error("Error fetching applicant's sector:", error);
       frappe.msgprint({
-        title: ('Error'),
-        message: ('Unable to retrieve the applicant\'s sector. Please select manually.'),
+        title: __('Error'),
+        message: __('Unable to retrieve the applicant\'s sector. Please select manually.'),
         indicator: 'red'
       });
     }
@@ -298,24 +299,27 @@ frappe.ui.form.on('IT Request', {
       });
     });
   },
-  
+
   applicant: async (frm: FrappeForm) => {
     await initializeForm(frm);
   },
-  
+
   refresh: async function (frm: FrappeForm) {
     // Initialize form
     await initializeForm(frm);
-    
+
+    // Set translated placeholder for problem_description field
+    frm.set_df_property('problem_description', 'placeholder', __('Please write your request in detail.'));
+
     // Code responsible for blocking the editing of the "resolution_deadline" field
     frm.set_df_property('resolution_deadline', 'hidden', 0);
-    
+
     if (!frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
       frm.set_df_property('resolution_deadline', 'read_only', 1);
       frm.fields_dict['resolution_deadline']?.$wrapper?.on('click', function () {
         frappe.msgprint({
-          title: ('Access Denied'),
-          message: ('You do not have permission to edit the request resolution deadline.'),
+          title: __('Access Denied'),
+          message: __('You do not have permission to edit the request resolution deadline.'),
           indicator: 'red'
         });
       });
@@ -323,10 +327,10 @@ frappe.ui.form.on('IT Request', {
       frm.set_df_property('resolution_deadline', 'read_only', 0);
       frm.fields_dict['resolution_deadline']?.$wrapper?.off('click');
     }
-    
+
     // Code for the 'problem_description' field
     frm.set_df_property('problem_description', 'hidden', 0);
-    
+
     if (frappe.user.has_role(['Information Technology User', 'Administrator', 'System Manager'])) {
       frm.set_df_property('problem_description', 'read_only', 0);
       frm.fields_dict['problem_description']?.$wrapper?.off('click');
@@ -338,18 +342,18 @@ frappe.ui.form.on('IT Request', {
         frm.set_df_property('problem_description', 'read_only', 1);
         frm.fields_dict['problem_description']?.$wrapper?.off('click').on('click', function () {
           frappe.msgprint({
-            title: ('Access Denied'),
-            message: ('You do not have permission to edit the request description. Contact the administrator.'),
+            title: __('Access Denied'),
+            message: __('You do not have permission to edit the request description. Contact the administrator.'),
             indicator: 'red'
           });
         });
       }
     }
-    
+
     // Form HTML elements adjustments
-    const allowedUsers = frappe.user.has_role('Information Technology User') || 
-                         frappe.user.has_role('System Manager') || 
-                         frappe.user.has_role('Administrator');
+    const allowedUsers = frappe.user.has_role('Information Technology User') ||
+      frappe.user.has_role('System Manager') ||
+      frappe.user.has_role('Administrator');
 
     const options = {
       removeTabs: true,
@@ -388,11 +392,11 @@ frappe.ui.form.on('IT Request', {
     frm.refresh_field('third_category');
     checkDocumentEditingOrMaintenance(frm);
   },
-  
+
   onload: async (frm: FrappeForm) => {
     await initializeForm(frm);
   },
-  
+
   validate: function (frm: FrappeForm) {
     const linkFields: string[] = Object.keys(frm.doc).filter((field: string) => field.startsWith('link_'));
     const invalidLinks: string[] = [];
@@ -462,11 +466,11 @@ frappe.ui.form.on('IT Request', {
 
       const plural = emptyRequiredFields.length > 1;
       frappe.throw({
-        title: plural ? 'Required fields' : 'Required field',
+        title: plural ? __('Required fields') : __('Required field'),
         message: `
                     <div>
-                        ${plural ? 'The following fields are required and cannot be empty:'
-            : 'The following field is required and cannot be empty:'}
+                        ${plural ? __('The following fields are required and cannot be empty:')
+            : __('The following field is required and cannot be empty:')}
                         <br><br>
                         <ul>
                             ${emptyRequiredFields.map(field => `<li>${field}</li>`).join('')}
@@ -482,11 +486,11 @@ frappe.ui.form.on('IT Request', {
 
       const plural = emptyLinkFields.length > 1;
       frappe.throw({
-        title: plural ? 'Required link fields' : 'Required link field',
+        title: plural ? __('Required link fields') : __('Required link field'),
         message: `
                     <div>
-                        ${plural ? 'The following link fields are required and cannot be empty:'
-            : 'The following link field is required and cannot be empty:'}
+                        ${plural ? __('The following link fields are required and cannot be empty:')
+            : __('The following link field is required and cannot be empty:')}
                         <br><br>
                         <ul>
                             ${emptyLinkFields.map(field => `<li>${field}</li>`).join('')}
@@ -526,7 +530,7 @@ function checkDocumentEditingOrMaintenance(frm: FrappeForm): void {
   if (isDocumentEditingOrMaintenance) {
     frappe.utils.play_sound("alert"); // Alert sound to get user's attention
     frappe.show_alert({
-      message: ('Please include links related to document editing or maintenance.'),
+      message: __('Please include links related to document editing or maintenance.'),
       indicator: 'blue'
     }, 5);
   }
