@@ -1,0 +1,13 @@
+[
+ {
+  "conditions": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Document Naming Rule",
+  "document_type": "IT Request",
+  "name": "IT Request Naming Series",
+  "prefix": "ITR-.YYYY.-",
+  "prefix_digits": 5,
+  "priority": 0
+ }
+]
