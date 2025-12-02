@@ -42,6 +42,8 @@ const categories: ITRequestCategories = {
       'Automation',
       'Dashboard',
       'Script',
+      'Advance Ticket/SN workflow',
+      'Translation Improvement/Fix',
       'Permissions',
       'Field, Rule and/or Trigger',
       'Defective webhook',
