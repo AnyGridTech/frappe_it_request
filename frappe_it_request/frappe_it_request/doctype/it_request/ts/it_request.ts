@@ -97,8 +97,6 @@ const categories: ITRequestCategories = {
   },
   'Infrastructure (Equipment)': {
     'Office': [
-      'Onboarding Kit',
-      'Offboarding Kit',
       'Notebook',
       'Mobile Phone',
       'Printer',
@@ -108,8 +106,6 @@ const categories: ITRequestCategories = {
       'Others'
     ],
     'Warehouse': [
-      'Onboarding Kit',
-      'Offboarding Kit',
       'Notebook',
       'Mobile Phone',
       'Printer',
@@ -119,8 +115,6 @@ const categories: ITRequestCategories = {
       'Others'
     ],
     'Office and Warehouse': [
-      'Onboarding Kit',
-      'Offboarding Kit',
       'Notebook',
       'Mobile Phone',
       'Printer',
