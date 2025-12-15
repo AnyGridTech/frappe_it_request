@@ -81,8 +81,6 @@
     },
     "Infrastructure (Equipment)": {
       "Office": [
-        "Onboarding Kit",
-        "Offboarding Kit",
         "Notebook",
         "Mobile Phone",
         "Printer",
@@ -92,8 +90,6 @@
         "Others"
       ],
       "Warehouse": [
-        "Onboarding Kit",
-        "Offboarding Kit",
         "Notebook",
         "Mobile Phone",
         "Printer",
@@ -103,8 +99,6 @@
         "Others"
       ],
       "Office and Warehouse": [
-        "Onboarding Kit",
-        "Offboarding Kit",
         "Notebook",
         "Mobile Phone",
         "Printer",
