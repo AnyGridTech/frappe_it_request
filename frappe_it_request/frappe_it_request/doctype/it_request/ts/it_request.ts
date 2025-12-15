@@ -276,19 +276,21 @@ frappe.ui.form.on('IT Request', {
         return {
           filters: {
             name: ['in', [
-              'Administrativo',
-              'Estoque',
-              'Engenharia',
-              'Fiscal',
-              'Laboratório de Placas',
-              'Laboratório de Reparos',
-              'Logística',
+              'Administrative',
+              'Stock',
+              'Engineering',
+              'Tax & Compliance',
+              'PCB Laboratory',
+              'Repair Laboratory',
+              'Logistics',
               'Marketing',
-              'Operações',
-              'Recursos Humanos',
-              'Suporte ao Cliente',
-              'Suporte Técnico',
-              'T.I'
+              'Sales',
+              'Operations',
+              'Human Resources',
+              'Customer Support',
+              'Technical Support',
+              'Customer Service',
+              'Information Technology'
             ]]
           }
         };

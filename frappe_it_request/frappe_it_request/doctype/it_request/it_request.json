@@ -130,7 +130,7 @@
    "reqd": 1
   },
   {
-   "depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\"\r\n",
+   "depends_on": "eval:doc.third_category == \"Onboarding Kit\" || doc.third_category == \"Offboarding Kit\"\r\n",
    "fieldname": "worker_info_section",
    "fieldtype": "Section Break",
    "label": "Employee Info"
@@ -141,7 +141,7 @@
    "in_global_search": 1,
    "in_list_view": 1,
    "label": "Employee Name",
-   "mandatory_depends_on": "eval:doc.third_category == \"Kit Onboarding\" || doc.third_category == \"Kit Offboarding\";\r\n"
+   "mandatory_depends_on": "eval:doc.third_category == \"Onboarding Kit\" || doc.third_category == \"Offboarding Kit\";\r\n"
   },
   {
    "fieldname": "employee_sector",

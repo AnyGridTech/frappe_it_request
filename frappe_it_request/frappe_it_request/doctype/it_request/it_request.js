@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 "use strict";
 (() => {
-  // frappe_it_request/doctype/it_request/ts/it_request.ts
+  // doctype/it_request/ts/it_request.ts
   var categories = {
     "System": {
       "Movidesk": [
@@ -242,19 +242,21 @@
           return {
             filters: {
               name: ["in", [
-                "Administrativo",
-                "Estoque",
-                "Engenharia",
-                "Fiscal",
-                "Laborat\xF3rio de Placas",
-                "Laborat\xF3rio de Reparos",
-                "Log\xEDstica",
+                "Administrative",
+                "Stock",
+                "Engineering",
+                "Tax & Compliance",
+                "PCB Laboratory",
+                "Repair Laboratory",
+                "Logistics",
                 "Marketing",
-                "Opera\xE7\xF5es",
-                "Recursos Humanos",
-                "Suporte ao Cliente",
-                "Suporte T\xE9cnico",
-                "T.I"
+                "Sales",
+                "Operations",
+                "Human Resources",
+                "Customer Support",
+                "Technical Support",
+                "Customer Service",
+                "Information Technology"
               ]]
             }
           };
