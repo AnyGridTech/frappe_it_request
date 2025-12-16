@@ -150,7 +150,7 @@
    "in_list_view": 1,
    "label": "Employee Department",
    "mandatory_depends_on": "eval:doc.third_category == \"Onboarding Kit\" || doc.third_category == \"Offboarding Kit\"\r\n",
-   "options": "User"
+   "options": "Department"
   },
   {
    "fieldname": "column_break_pcck",
