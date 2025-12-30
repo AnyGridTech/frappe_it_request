@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 "use strict";
 (() => {
-  // doctype/it_request/ts/it_request.ts
+  // frappe_it_request/doctype/it_request/ts/it_request.ts
   var categories = {
     "System": {
       "Movidesk": [
