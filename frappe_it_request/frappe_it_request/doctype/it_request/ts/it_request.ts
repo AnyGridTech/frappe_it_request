@@ -242,12 +242,18 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
     try {
       const r = await frappe.db.get_value('User', frm.doc['applicant'], 'internal_department');
       if (r && r.message && r.message.internal_department) {
-        frm.set_value("sector_applicant", r.message.internal_department);
-        frm.refresh_field('sector_applicant');
+        // Only update the field if the value actually changed to avoid
+        // marking the form as dirty (which shows "Not Saved").
+        if (frm.doc['sector_applicant'] !== r.message.internal_department) {
+          frm.set_value("sector_applicant", r.message.internal_department);
+          frm.refresh_field('sector_applicant');
+        }
       } else {
-        // Clear the field if no department is found
-        frm.set_value("sector_applicant", null);
-        frm.refresh_field('sector_applicant');
+        // Clear the field only if it currently has a value
+        if (frm.doc['sector_applicant']) {
+          frm.set_value("sector_applicant", null);
+          frm.refresh_field('sector_applicant');
+        }
       }
     } catch (error) {
       console.error("Error fetching applicant's sector:", error);
