@@ -212,10 +212,16 @@
     if (frm.doc["applicant"]) {
       try {
         const r = await frappe.db.get_value("User", frm.doc["applicant"], "internal_department");
-        const fetchedDept = r && r.message && r.message.internal_department ? r.message.internal_department : null;
-        if (frm.doc["sector_applicant"] !== fetchedDept) {
-          frm.set_value("sector_applicant", fetchedDept);
-          frm.refresh_field("sector_applicant");
+        if (r && r.message && r.message.internal_department) {
+          if (frm.doc["sector_applicant"] !== r.message.internal_department) {
+            frm.set_value("sector_applicant", r.message.internal_department);
+            frm.refresh_field("sector_applicant");
+          }
+        } else {
+          if (frm.doc["sector_applicant"]) {
+            frm.set_value("sector_applicant", null);
+            frm.refresh_field("sector_applicant");
+          }
         }
       } catch (error) {
         console.error("Error fetching applicant's sector:", error);
