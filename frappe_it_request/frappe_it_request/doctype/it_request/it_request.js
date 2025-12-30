@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 "use strict";
 (() => {
-  // doctype/it_request/ts/it_request.ts
+  // frappe_it_request/doctype/it_request/ts/it_request.ts
   var categories = {
     "System": {
       "Movidesk": [
@@ -212,11 +212,9 @@
     if (frm.doc["applicant"]) {
       try {
         const r = await frappe.db.get_value("User", frm.doc["applicant"], "internal_department");
-        if (r && r.message && r.message.internal_department) {
-          frm.set_value("sector_applicant", r.message.internal_department);
-          frm.refresh_field("sector_applicant");
-        } else {
-          frm.set_value("sector_applicant", null);
+        const fetchedDept = r && r.message && r.message.internal_department ? r.message.internal_department : null;
+        if (frm.doc["sector_applicant"] !== fetchedDept) {
+          frm.set_value("sector_applicant", fetchedDept);
           frm.refresh_field("sector_applicant");
         }
       } catch (error) {

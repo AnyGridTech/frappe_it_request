@@ -241,12 +241,16 @@ async function initializeForm(frm: FrappeForm): Promise<void> {
   if (frm.doc['applicant']) {
     try {
       const r = await frappe.db.get_value('User', frm.doc['applicant'], 'internal_department');
-      if (r && r.message && r.message.internal_department) {
-        frm.set_value("sector_applicant", r.message.internal_department);
-        frm.refresh_field('sector_applicant');
-      } else {
-        // Clear the field if no department is found
-        frm.set_value("sector_applicant", null);
+      // Only update the field if the fetched value is different from the
+      // current value. This prevents unnecessary `set_value` calls which
+      // mark the form as dirty (showing "Not Saved") even when nothing
+      // changed.
+      const fetchedDept = r && r.message && r.message.internal_department
+        ? r.message.internal_department
+        : null;
+
+      if (frm.doc['sector_applicant'] !== fetchedDept) {
+        frm.set_value('sector_applicant', fetchedDept);
         frm.refresh_field('sector_applicant');
       }
     } catch (error) {
